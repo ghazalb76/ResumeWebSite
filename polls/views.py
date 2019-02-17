@@ -15,4 +15,4 @@ def signUpResult(request, name):
     return HttpResponse(response % name)
 
 def signUp(request):
-    return HttpResponse("You have to sign up first")
+    return render(request, 'polls/signUp.html')
