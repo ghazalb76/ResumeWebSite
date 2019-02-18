@@ -1,6 +1,7 @@
 #django imports
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
 #project imports
 from .models import User
@@ -16,3 +17,11 @@ def signUpResult(request, name):
 
 def signUp(request):
     return render(request, 'polls/signUp.html')
+
+def submit_info(request):
+    user = User()
+    user.name = request.POST.get('fname','')
+    user.family_name = request.POST.get('lname','')
+    user.email = request.POST.get('email','')
+    user.save()
+    return HttpResponse("OK")
