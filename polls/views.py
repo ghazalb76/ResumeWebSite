@@ -26,3 +26,17 @@ def submit_info(request):
     user.repass = request.POST.get('repass','')
     user.save()
     return HttpResponse("OK")
+
+def login(request):
+    user_name = request.POST.get('user_name','')
+    password = request.POST.get('pass_word','')
+    users_list = Users.objects.all()
+    print (user_name)
+    print (password)
+    for user in users_list:
+        print (user.username)
+        print (user.password)
+        print("****")
+        if user.username == user_name and user.password == password:
+            return HttpResponse("Done")
+    return HttpResponse("User does not exist")
