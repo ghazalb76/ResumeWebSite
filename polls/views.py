@@ -15,8 +15,11 @@ def signUpResult(request, name):
     response = "You have registered successfully as"
     return HttpResponse(response % name)
 
-def index(request):
+def index(request): 
     return render(request, 'polls/index.html')
+
+def resume(request):
+    return render(request, 'polls/resume.html')
 
 def submit_info(request):
     user = Users()
